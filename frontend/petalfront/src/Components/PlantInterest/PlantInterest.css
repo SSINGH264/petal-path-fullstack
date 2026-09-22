@@ -1,0 +1,60 @@
+.plant-interest-section {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  color: #7ea37f;
+  border-radius: 50px;
+  text-align: center;
+  background: #FCE4E880;
+}
+
+.interest-button:hover {
+  background: #7ea37f;
+}
+
+.plant-interest-title {
+  color: #7ea37f;
+  margin-bottom: 10px;
+  font-family: cursive;
+}
+
+.plant-interest-subtitle {
+  color: #5f7d60;
+  margin-bottom: 20px;
+}
+
+.interest-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.interest-button {
+  margin: 5px;
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #f9eef2;
+  cursor: pointer;;
+}
+
+.interest-button.active {
+  background: #dfeedd;
+  border-color: #7ea37f;
+  color: #3f5f40;
+  font-weight: 600;
+}
+
+.selected-display {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: white;
+}
+
+.selected-display h3 {
+  margin-bottom: 8px;
+  color: #7ea37f;
+}

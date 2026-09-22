@@ -1,0 +1,34 @@
+.search {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.search select {
+  width: 250px;
+  padding: 12px 16px;
+  border: 3px solid rgba(247, 168, 184, 0.439); 
+  border-radius: 10px;
+  background-color: whitesmoke;
+  color: #7fa37a;
+  font-size: 16px;  
+}
+
+.search select:hover {
+  border-color: #F7A8B8;
+}
+
+.search button {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 3px solid rgba(247, 168, 184, 0.439);
+  background-color: white;
+  color:#7fa37a;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+ 

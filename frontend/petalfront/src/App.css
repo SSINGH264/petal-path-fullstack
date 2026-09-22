@@ -1,0 +1,18 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

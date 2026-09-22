@@ -1,0 +1,72 @@
+.browse-row{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.browse-card {
+    width: 220px;
+    height: 260px;
+    border: 2px solid #f7a8b870; 
+    background-color: pink;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card-content {
+  flex: 1;
+  background: linear-gradient(
+    rgba(244, 221, 235, 0.55) 0%,
+    rgba(230, 214, 245, 0.55) 100%  
+  );
+}
+
+.card-content p {
+  color: #7fa37a;
+  text-align: center;
+}
+
+.card-label {
+    background: linear-gradient(90deg, #f3c6d8, #d9c2f0);
+    padding: 14px;
+    text-align: center;
+    letter-spacing: 0.3px;
+    color: #7fa37a;
+    font-family: cursive;
+}
+
+.browse-title {
+    font-family: cursive;
+    font-size: 30px;
+    color: #7fa37a;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 25px;
+}
+
+/* to let the card "pop" */
+
+.browse-card:hover {
+  transform: scale(1.03);
+}
+
+/* to make the card image more uniform thoughout*/
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}

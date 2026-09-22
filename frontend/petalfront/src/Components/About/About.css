@@ -1,0 +1,19 @@
+.about-page {
+  text-align: center;
+  padding: 30px 20px;
+  color: #7fa37a;
+}
+
+.about-page h1 {
+  font-family: cursive;
+  font-size: 40px;
+}
+
+.about-page p {
+  font-size: 22px;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #FCE4E880;
+  font-family: cursive;
+  line-height: 1.5;
+}

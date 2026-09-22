@@ -1,0 +1,27 @@
+.footer {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #F7A8B833;
+  color: #7fa37a;
+  font-family: cursive;
+}
+
+.footer-tagline {
+  font-size: 18px;
+  margin-bottom: 6px;
+  font-family: cursive;
+}
+
+.footer-text {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.footer-table {
+  margin-left: auto;
+}
+
+.footer-table td {
+  padding: 4px 8px;
+}
