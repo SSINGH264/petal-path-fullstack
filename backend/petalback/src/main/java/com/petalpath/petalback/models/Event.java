@@ -19,14 +19,6 @@ public class Event {
     //empty constructor
     public Event () {}
 
-    //completed constructor
-    public Event (int id, String title, String city, String date, String location) {
-        this.id = id;
-        this.title = title;
-        this.city = city;
-        this.date = date;
-        this.location = location;
-    }
     public int getID() {return id;}
     public void setId(int id)  {this.id = id;}
 
