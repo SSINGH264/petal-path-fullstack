@@ -10,7 +10,7 @@ import SignUp from "./Components/SingUp/SignUp";
 import About from "./Components/About/About";
 import PlantInterest from "./Components/PlantInterest/PlantInterest";
 
-//not sure if these are formatted correctly, but its easier for me to read
+//Routes for each page
 
 const App = () => {
   return (
@@ -20,26 +20,25 @@ const App = () => {
         <Header />
         <Routes> 
 
-          <Route path="/" element={<BrowseCategory />} />
-
-          <Route path="/about" element={<About />} />
-
-          <Route path="/plant-interest" element={<PlantInterest />} />
+          <Route path= "/" element={<BrowseCategory />} />
+          <Route path= "/about" element={<About />} />
+          <Route path= "/plant-interest" element={<PlantInterest />} />
+          <Route path = "/events" element={<Events />} />
 
           <Route 
             path="/signin" 
             element={
               <div className="signin-page"> 
-              <SignInForm /> 
+                <SignInForm /> 
               </div>
             }
-            />
+          />
 
           <Route 
             path="/signup"
             element={
               <div className="signin-page"> 
-              <SignUp />
+                <SignUp />
               </div>
             }
           />
