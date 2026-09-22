@@ -9,6 +9,7 @@ import SignInForm from "./Components/SignIn/SignIn";
 import SignUp from "./Components/SingUp/SignUp";
 import About from "./Components/About/About";
 import PlantInterest from "./Components/PlantInterest/PlantInterest";
+import Events from "./Components/Events/Events";
 
 //Routes for each page
 
