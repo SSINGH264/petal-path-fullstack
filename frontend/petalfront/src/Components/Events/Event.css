@@ -17,7 +17,6 @@
     align-items: flex-start;
 }
 
-
 .event-form {
     display: flex;
     flex-direction: column;
@@ -26,6 +25,38 @@
     border-radius: 20px;
     padding: 20px;
 
+}
+.event-form h2 {
+    font-family: cursive;
+    color: #7ea37f;
+    text-align: center;
+    margin-top: 0;
+    }
+
+.event-form label {
+    font-size: 14px;
+    color: 5f7d60;
+    margin-top: 10px;
+}
+
+.event-form input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: #f9eef2;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.event-form button {
+    margin-top: 16px;
+    padding: 10px;
+    border: 1px solid #7ea37f;
+    border-radius: 20px;
+    background: #dfeedd;
+    color: #3f5f40;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .event-row {
