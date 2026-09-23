@@ -52,7 +52,7 @@ const handleUpdateEvent = (id, eventData) => {
     });
 };
 
-const resetForm = () => {
+const resetForm = () => { //resets the fields
     setTitle("");
     setCity("");
     setDate("");
@@ -92,7 +92,7 @@ const handleDeleteClick = (id) => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    const eventData = { title, city, date, location };
+    const eventData = { title, city, date, location }; //adding the event data to JSON
 
     if (idEdit) {
       handleUpdateEvent(idEdit, eventData);
@@ -101,7 +101,7 @@ const handleSubmit = (e) => {
     }
   };
 
-  const handleEditClick = (event) => {
+  const handleEditClick = (event) => { //edit event will read all the values
     setTitle(event.title);
     setCity(event.city);
     setDate(event.date);
@@ -134,7 +134,7 @@ const handleSubmit = (e) => {
         </form>
 
         <div className="event-list">
-          {events.length === 0 && <p>No events yet.</p>}
+          {events.length === 0 && <p>No events planned.</p>}
           {events.map((event) => (
             <div className="event-row" key={event.id}>
               <div>
