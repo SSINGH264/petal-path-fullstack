@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 //Setting the URL
 @RequestMapping ("/events")
+@CrossOrigin(origins = "http://localhost:5173") //
 
 public class EventController {
 
