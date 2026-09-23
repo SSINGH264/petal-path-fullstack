@@ -1,4 +1,7 @@
 package com.petalpath.petalback.repositories;
 
-public interface LocationRepository {
+import com.petalpath.petalback.models.Location;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LocationRepository extends JpaRepository <Location, Integer> {
 }
