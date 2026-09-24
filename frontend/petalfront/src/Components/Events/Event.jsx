@@ -12,11 +12,18 @@ const Events = () => {
 // list of events from database
 const [events, setEvents] = useState ([]);
 
-// these will hold the state of the values in the form
+// these will hold the state of the values in the event form
 const [title, setTitle] = useState("");
 const [date, setDate] = useState("");
 const [locations, setLocations] = useState([]);
 const [locationId, setLocationId] = useState("");
+
+// thse will hold the state for the values in location
+const [cities, setCities] = useState ([]); //location from dropdown
+const [locationName, setLocationName] = useState ("");
+const [locationDescription, setLocationDescription] = useState("");
+const [locationCityId, setLocationCityId] = useState("");
+const [locationEdit, setLocationEdit] = useState(null);
 
 // for event id
 const [idEdit, setIdEdit] = useState(null);
@@ -24,6 +31,7 @@ const [idEdit, setIdEdit] = useState(null);
 useEffect(() => {
     fetchEvents();
     fetchLocations();
+    fetchCities();
 }, []);
 
 const fetchEvents = () => {
@@ -41,12 +49,12 @@ const fetchEvents = () => {
 
 const fetchLocations = () => {
   fetch(LOCATIONS_URL)
-  .then(function (response) {
-    return response.json();
+    .then(function (response) {
+      return response.json();
   })
 
-  .then(function(data) {
-    setLocations(data);
+    .then(function(data) {
+      setLocations(data);
   })
 
   .catch(function (error) {
@@ -55,6 +63,100 @@ const fetchLocations = () => {
 
 }
 
+const fetchCities = () => {
+  fetch(CITIES_URL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function(data) {
+      setCities(data);
+    })
+    .catch(function (error) {
+      console.error("Error fetching cities", error);
+    });
+
+}
+
+// CRUD for location
+
+//reseting location form 
+const resetLocationForm = () => {
+  setLocationName("");
+  setLocationDescription("");
+  setLocationCityId("");
+  setLocationEdit(null);
+};
+
+//sending location to backend (for post)
+const handleAddLocation = (locationData) => {
+  fetch(LOCATIONS_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(locationData),
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function () {
+      resetLocationForm();
+      fetchLocations();
+    })
+    .catch(function (error) {
+      console.error("Error adding location:", error);
+    });
+};
+// updating existing location (for put)
+const handleUpdateLocation = (id, locationData) => {
+  fetch(`${LOCATIONS_URL}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(locationData),
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function () {
+      resetLocationForm();
+      fetchLocations();
+    })
+    .catch(function (error) {
+      console.error("Error updating location:", error);
+    });
+};
+
+// deleting location by id ( for delete)
+const handleDeleteLocation = (id) => {
+  fetch(`${LOCATIONS_URL}/${id}`, {
+    method: "DELETE",
+  })
+    .then(function () {
+      fetchLocations();
+    })
+    .catch(function (error) {
+      console.error("Error deleting location:", error);
+    });
+};
+
+const handleLocationSubmit = (e) => {
+  e.preventDefault(); // prevents page from refreshing
+
+
+//building location object to send
+const locationData = {
+  name: locationName,
+  description: locationDescription,
+  city: {id: parseInt(locationCityId)}
+};
+
+//
+if (locationEdit) {
+  handleUpdateLocation(locationEdit, locationData);
+} else {
+  handleAddLocation (locationData);
+}
+};
+
+//handling update
 const handleUpdateEvent = (id, eventData) => {
   fetch(`${API_URL}/${id}`, {
     method: "PUT",
