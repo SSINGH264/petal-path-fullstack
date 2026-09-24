@@ -159,12 +159,12 @@ const handleSubmit = (e) => {
           {events.length === 0 && <p>No events planned.</p>}
           {events.map((event) => (
             <div className="event-row" key={event.id}>
-              <div>
+              <div className="event-info"> 
                 <strong>{event.title}</strong> - {event.date}
                 {event.location &&` | ${event.location.name}`}
                 {event.location && event.location.city && ` | ${event.location.city.name}`}
               </div>
-              <div>
+              <div className ="event-buttons">
                 <button onClick={() => handleEditClick(event)}>Edit</button>
                 <button onClick={() => handleDeleteClick(event.id)}>Delete</button>
               </div>
