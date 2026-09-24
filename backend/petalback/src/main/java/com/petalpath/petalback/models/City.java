@@ -13,6 +13,7 @@ public class City {
 
     private String name;
     private String state;
+    private boolean interested = false;
 
     //empty constructor
     public City () {}
@@ -26,4 +27,7 @@ public class City {
 
     public String getState() {return state;}
     public void setState(String state) {this.state = state;}
+
+    public boolean isInterested() {return interested;}
+    public void setInterested(boolean interested) {this.interested = interested;}
 }
