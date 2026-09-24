@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import "./Event.css"
 
-// base url
+// events url
 const API_URL = "http://localhost:8080/events";
 //locations url
 const LOCATIONS_URL = "http://localhost:8080/locations";
+// cities url
+const CITIES_URL = "http://localhost:8080/cities";
 
 const Events = () => {
 // list of events from database
