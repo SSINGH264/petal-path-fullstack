@@ -24,6 +24,7 @@ const [locationName, setLocationName] = useState ("");
 const [locationDescription, setLocationDescription] = useState("");
 const [locationCityId, setLocationCityId] = useState("");
 const [locationEdit, setLocationEdit] = useState(null);
+const [cityToAdd, setCityToAdd] = useState("");
 
 // for event id
 const [idEdit, setIdEdit] = useState(null);
