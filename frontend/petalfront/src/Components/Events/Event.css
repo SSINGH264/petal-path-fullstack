@@ -62,21 +62,32 @@
 .event-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 10px;
 }
 
 .event-row button {
-  margin-left: 8px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1px solid #ddd;
-  background: #f9eef2;
-  color: #3f5f40;
-  font-size: 13px;
-  cursor: pointer;
-}
+    margin-left: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background: #f9eef2;
+    color: #3f5f40;
+    font-size: 13px;
+    cursor: pointer;
+    }
 
 .event-row button:hover {
   background: #7ea37f;
   color: white;
+}
+
+.event-info {
+    max-width: 70%;
+}
+
+.event-buttons {
+    display: flex;
+    gap: 8px;
 }
