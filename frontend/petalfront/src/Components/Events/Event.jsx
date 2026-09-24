@@ -233,8 +233,59 @@ const handleSubmit = (e) => {
     setLocationId(event.location ? event.location.id : "");
   };
 
+  //one for location and one for event
   return (
     <section className="events-section">
+      <h1 className="events-title"> Manage Locations </h1>
+
+      <div className="events-content"> 
+        <form className = "event-form" onSubmit={handleLocationSubmit}>
+          <h2>{locationEdit? "Edit Location" : "Add New Location"}</h2>
+
+          <label htmlFor="locationName"> Name </label>
+          <input id = "locationName" 
+                 type = "text" 
+                 value = {locationName} onChange={(e) => setLocationName(e.target.value)} required/>
+
+          <label htmlFor = "locationDescription"> Description </label>
+          <input id="locationDescription" 
+                 type="text" value={locationDescription} 
+                 onChange={(e) => setLocationDescription(e.target.value)} required />
+
+          <label htmlFor = "locationCity"> City </label>
+          <select id="locationCity" 
+                  value={locationCityId} 
+                  onChange={(e) => setLocationCityId(e.target.value)} required>
+                    
+             <option value="">Choose a city</option> {cities.map((city) => (
+              <option key={city.id} value={city.id}>{city.name}</option>
+      ))}
+    </select>
+    
+    <button type ="submit">{locationEdit? "Update Location" : "Save Location"} </button>
+      {locationEdit && <button type = "button" onClick = {resetLocationForm}>Cancel</button> }
+
+        </form>
+
+      <div className= "event-list">
+      {locations.length === 0 && <p>No locations yet.</p>}
+      {locations.map((location) => (
+        <div className="event-row" key = {location.id}>
+          <div className= "event-info">
+            <strong>{location.name}</strong>
+            {location.city && `| ${location.city.name}`}
+          </div>
+          <div className = "event-buttons">
+            <button onClick={() => handleEditLocationClick(location)}>Edit</button>
+            <button onClick={() => handleDeleteLocation(location.id)}>Delete</button>
+          </div>
+        </div>
+      )
+
+      )}
+      </div>
+    </div>
+
       <h1 className="events-title">Manage Events</h1>
 
       <div className="events-content">
@@ -275,7 +326,7 @@ const handleSubmit = (e) => {
             </div>
           ))}
         </div>
-      </div>
+        </div>
     </section>
   );
 };
