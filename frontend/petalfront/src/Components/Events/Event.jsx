@@ -342,9 +342,13 @@ const handleSubmit = (e) => {
           <label htmlFor="location">Location</label>
           <select id="location" value={locationId} onChange={(e) => setLocationId(e.target.value)} required>
               <option value="">Choose a location</option>
-                {locations.map((location) => (
-                  <option key={location.id} value={location.id}> {location.name} </option>
+
+                {locations
+                  .filter((location) => location.city && location.city.interested)
+                  .map((location) => (
+                    <option key={location.id} value={location.id}>{location.name}</option>
                 ))}
+
               </select>
 
           <button type="submit">{idEdit ? "Update Event" : "Save Event"}</button>
