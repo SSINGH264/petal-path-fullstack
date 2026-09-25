@@ -97,6 +97,7 @@ const handleAddCityInterest = (e) => {
   .then(function () {
     setCityToAdd("");
     fetchCities();
+    fetchLocations();
   })
   .catch(function(error) {
     console.error ("Error adding city interest:", error);
@@ -119,6 +120,7 @@ const handleRemoveCityOfInterest = (city) => {
 
     .then(function() {
       fetchCities();
+      fetchLocations();
 
     })
 
