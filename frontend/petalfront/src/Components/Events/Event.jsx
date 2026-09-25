@@ -78,11 +78,59 @@ const fetchCities = () => {
 
 }
 
+
 // marking a city of interest
 const handleAddCityInterest = (e) => {
   e.preventDefault();
   const city = cities.find((city) => city.id === parseInt(cityToAdd));
-}
+  if (!city) return;
+  
+  fetch (`${CITIES_URL}/${city.id}`, {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ name: city.name, state: city.state, interested: true })
+  })
+  
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function () {
+    setCityToAdd("");
+    fetchCities();
+  })
+  .catch(function(error) {
+    console.error ("Error adding city interest:", error);
+  });
+
+};
+
+//removing a city of interest
+const handleRemoveCityOfInterest = (city) => {
+  fetch(`${CITIES_URL}/${city.id}`, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({name: city.name, state: city.state, interested: false }),
+
+    })
+
+    .then(function(response) {
+      return response.json();
+    })
+
+    .then(function() {
+      fetchCities();
+
+    })
+
+    .catch(function (error) {
+      console.error("Error removing city:", error)
+
+    });
+
+};
+
+
+
 
 // CRUD for location
 
@@ -246,52 +294,38 @@ const handleSubmit = (e) => {
       <h1 className="events-title"> Manage Locations </h1>
 
       <div className="events-content"> 
-        <form className = "event-form" onSubmit={handleLocationSubmit}>
-          <h2>{locationEdit? "Edit Location" : "Add New Location"}</h2>
+        <form className = "event-form" onSubmit={handleAddCityInterest}>
+          <h2>Add City of Interest</h2>
 
-          <label htmlFor="locationName"> Name </label>
-          <input id = "locationName" 
-                 type = "text" 
-                 value = {locationName} onChange={(e) => setLocationName(e.target.value)} required/>
+          <label htmlFor="cityToAdd"> city </label>
+          <select id="cityToAdd" value={cityToAdd} onChange={(e) => setCityToAdd(e.target.value)} required>
+            <option value="">Choose a city</option>
+           {cities.map((city) => (
+            <option key={city.id} value={city.id}>{city.name}</option>
+             ))}
+           </select>
 
-          <label htmlFor = "locationDescription"> Description </label>
-          <input id="locationDescription" 
-                 type="text" value={locationDescription} 
-                 onChange={(e) => setLocationDescription(e.target.value)} required />
-
-          <label htmlFor = "locationCity"> City </label>
-          <select id="locationCity" 
-                  value={locationCityId} 
-                  onChange={(e) => setLocationCityId(e.target.value)} required>
-                    
-             <option value="">Choose a city</option> {cities.map((city) => (
-              <option key={city.id} value={city.id}>{city.name}</option>
-      ))}
-    </select>
-    
-    <button type ="submit">{locationEdit? "Update Location" : "Save Location"} </button>
-      {locationEdit && <button type = "button" onClick = {resetLocationForm}>Cancel</button> }
+           <button type="submit">Save City</button>
 
         </form>
 
-      <div className= "event-list">
-      {locations.length === 0 && <p>No locations yet.</p>}
-      {locations.map((location) => (
-        <div className="event-row" key = {location.id}>
-          <div className= "event-info">
-            <strong>{location.name}</strong>
-            {location.city && `| ${location.city.name}`}
-          </div>
-          <div className = "event-buttons">
-            <button onClick={() => handleEditLocationClick(location)}>Edit</button>
-            <button onClick={() => handleDeleteLocation(location.id)}>Delete</button>
-          </div>
-        </div>
-      )
+        <div className = "event-list">
+          {cities.filter((city) => city.interested).length === 0 && 
+            <p>No cities of interest yet.</p>}
+          {cities.filter((city) => city.interested).map((city) => ( 
+            <div className = "event-row" key={city.id}> 
+            <div className = "event-info">
+              <strong>{city.name}</strong>
+            </div>
 
-      )}
-      </div>
-    </div>
+          <div className = "event-buttons">
+            <button onClick={() => handleRemoveCityOfInterest(city)}>Remove</button>
+            </div>
+            </div>
+
+          ))}
+          </div>
+        </div> 
 
       <h1 className="events-title">Manage Events</h1>
 
