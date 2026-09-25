@@ -51,3 +51,15 @@ Frontend setup:
             npm run dev
     - Press "o" to open the app, or visit http://localhost:5173
 
+Wireframes: 
+
+• Home Page
+![Home page wireframe](./readme-images/home-page-wireframe.png)
+
+• Events Page 
+![Events page wireframe](./readme-images/event-page-wireframe.png)
+
+•E R Diagram
+![ER Diagram](./readme-images/entity-relationship-diagram.png)
+
+
