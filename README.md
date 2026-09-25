@@ -76,6 +76,8 @@ Unsolved Problems :
 
 Future Features: 
     • User accounts with back end functionality
+
     • Dedicated locations page with URL's
+    
     • Help plant interest page filter places to visit
 
