@@ -78,6 +78,12 @@ const fetchCities = () => {
 
 }
 
+// marking a city of interest
+const handleAddCityInterest = (e) => {
+  e.preventDefault();
+  const city = cities.find((city) => city.id === parseInt(cityToAdd));
+}
+
 // CRUD for location
 
 //reseting location form 
