@@ -11,14 +11,16 @@ List of Technologies used:
         • Java
 
     Front End:
-        • Visual Studio Code
         • React
-        • API
         • Vite
 
     Backend:
-        • IntelliJ IDEA
-        • Springboot
-        • Postman
-        • MySQL Workbench
+        • Spring Boot
+        • MySQL
 
+    Development Tools & Environments:
+        • IDEs: IntelliJ IDEA, Visual Studio Code
+        • Database Management: MySQL Workbench
+        • API : Postman
+
+    Version Control: Git/Gibhub
