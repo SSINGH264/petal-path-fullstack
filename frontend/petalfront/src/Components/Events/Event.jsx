@@ -299,7 +299,7 @@ const handleSubmit = (e) => {
         <form className = "event-form" onSubmit={handleAddCityInterest}>
           <h2>Add City of Interest</h2>
 
-          <label htmlFor="cityToAdd"> city </label>
+          <label htmlFor="cityToAdd"> City </label>
           <select id="cityToAdd" value={cityToAdd} onChange={(e) => setCityToAdd(e.target.value)} required>
             <option value="">Choose a city</option>
            {cities.map((city) => (
@@ -315,6 +315,7 @@ const handleSubmit = (e) => {
           {cities.filter((city) => city.interested).length === 0 && 
             <p>No cities of interest yet.</p>}
           {cities.filter((city) => city.interested).map((city) => ( 
+            
             <div className = "event-row" key={city.id}> 
             <div className = "event-info">
               <strong>{city.name}</strong>
@@ -323,7 +324,8 @@ const handleSubmit = (e) => {
           <div className = "event-buttons">
             <button onClick={() => handleRemoveCityOfInterest(city)}>Remove</button>
             </div>
-            </div>
+          </div>
+          
 
           ))}
           </div>
@@ -333,9 +335,9 @@ const handleSubmit = (e) => {
 
       <div className="events-content">
         <form className="event-form" onSubmit={handleSubmit}>
-          <h2>{idEdit ? "Edit Event" : "Add New Event"}</h2>
+          <h2>{idEdit ? "Edit Experience" : "Add Experience"}</h2>
 
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Floral Adventure</label>
           <input id="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
 
           <label htmlFor="date">Date</label>
@@ -365,6 +367,7 @@ const handleSubmit = (e) => {
                 <strong>{event.title}</strong> - {event.date}
                 {event.location &&` | ${event.location.name}`}
                 {event.location && event.location.city && ` | ${event.location.city.name}`}
+                
               </div>
               <div className ="event-buttons">
                 <button onClick={() => handleEditClick(event)}>Edit</button>
