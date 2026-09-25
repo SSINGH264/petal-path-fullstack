@@ -64,12 +64,18 @@ Wireframes:
 
 Descriptions of Unsolved Problems/Features:
 
-Unsolved Problems & Future Features:
+Unsolved Problems :
 
-•  No user accounts/authentication. The "cities of interest" list is currently  a shared list for anyone using the app, not personal to an individual user. Adding a functional login would let each user keep their own private list, plus a calendar feature to track and plan saved dates after the user saves an event.
+    •  No user accounts/authentication. The "cities of interest" list is currently a shared list for anyone using the app, not personal to an individual user. Adding a functional login would let each user keep their own private list, plus a calendar feature to track and plan saved dates after the user saves an event.
 
-• No dedicated Locations page. Locations are seeded via SQL rather than browsable through the UI. Adding each location's description and a link to search for it would help users decide where to go. Although I had a description along with the location, visually presenting it on the same page  looked too cluttered alongside the Events section. A dedicated page for browsing locations would solve this.
+    • No dedicated Locations page. Locations are seeded via SQL rather than browsable through the UI. Adding each location's description and a link to search for it would help users decide where to go. Although I had a description along with the location, visually presenting it on the same page  looked too cluttered alongside the Events section. A dedicated page for browsing locations would solve this.
 
-• No website links for locations. Each location could link out to its official site for hours, admission, and current events.
+    • No website links for locations. Each location could link out to its official site for hours, admission, and current events.
 
-• Plant category filtering. For the plant interest page, I wanted users to pick the flowers they are most intrested in and have specific flower types to the locations that have them. Currently, the plant interest section has no backend. Adding that and associating the plant with a location would be useful. 
+    • Plant category filtering. For the plant interest page, I wanted users to pick the flowers they are most intrested in and have specific flower types to the locations that have them. Currently, the plant interest section has no backend. Adding that and associating the plant with a location would be useful. 
+
+Future Features: 
+    • User accounts with back end functionality
+    • Dedicated locations page with URL's
+    • Help plant interest page filter places to visit
+
