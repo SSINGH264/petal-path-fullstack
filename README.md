@@ -75,9 +75,10 @@ Unsolved Problems :
     • Plant category filtering. For the plant interest page, I wanted users to pick the flowers they are most intrested in and have specific flower types to the locations that have them. Currently, the plant interest section has no backend. Adding that and associating the plant with a location would be useful. 
 
 Future Features: 
+
     • User accounts with back end functionality
 
     • Dedicated locations page with URL's
-    
+
     • Help plant interest page filter places to visit
 
