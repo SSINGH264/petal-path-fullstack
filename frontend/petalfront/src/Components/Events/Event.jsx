@@ -78,7 +78,6 @@ const fetchCities = () => {
 
 }
 
-
 // marking a city of interest
 const handleAddCityInterest = (e) => {
   e.preventDefault();
@@ -130,8 +129,6 @@ const handleRemoveCityOfInterest = (city) => {
     });
 
 };
-
-
 
 
 // CRUD for location
@@ -313,7 +310,7 @@ const handleSubmit = (e) => {
 
         <div className = "event-list">
           {cities.filter((city) => city.interested).length === 0 && 
-            <p>No cities of interest yet.</p>}
+            <p>No cities of interest yet, where to next?</p>}
           {cities.filter((city) => city.interested).map((city) => ( 
             
             <div className = "event-row" key={city.id}> 
@@ -360,7 +357,7 @@ const handleSubmit = (e) => {
         </form>
 
         <div className="event-list">
-          {events.length === 0 && <p>No events planned.</p>}
+          {events.length === 0 && <p>No experiences added, your floral path awaits!</p>}
           {events.map((event) => (
             <div className="event-row" key={event.id}>
               <div className="event-info"> 
