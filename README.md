@@ -93,7 +93,7 @@ Future Features:
 
     • User accounts with back end functionality
 
-    • Dedicated locations page with URL's
+    • Dedicated locations page with URL's and address
 
     • Help plant interest page filter places to visit
 

@@ -18,12 +18,8 @@ const [date, setDate] = useState("");
 const [locations, setLocations] = useState([]);
 const [locationId, setLocationId] = useState("");
 
-// thse will hold the state for the values in location
+// thse will hold the state for city and city picker
 const [cities, setCities] = useState ([]); //location from dropdown
-const [locationName, setLocationName] = useState ("");
-const [locationDescription, setLocationDescription] = useState("");
-const [locationCityId, setLocationCityId] = useState("");
-const [locationEdit, setLocationEdit] = useState(null);
 const [cityToAdd, setCityToAdd] = useState("");
 
 // for event id
@@ -35,6 +31,7 @@ useEffect(() => {
     fetchCities();
 }, []);
 
+// gets all events from backend (READ)
 const fetchEvents = () => {
   fetch(API_URL)
     .then(function (response) {
@@ -48,6 +45,7 @@ const fetchEvents = () => {
     });
 };
 
+// gets locations from backend
 const fetchLocations = () => {
   fetch(LOCATIONS_URL)
     .then(function (response) {
@@ -64,6 +62,7 @@ const fetchLocations = () => {
 
 }
 
+// gets cities from backend
 const fetchCities = () => {
   fetch(CITIES_URL)
     .then(function (response) {
@@ -130,87 +129,7 @@ const handleRemoveCityOfInterest = (city) => {
 
 };
 
-
-// CRUD for location
-
-//reseting location form 
-const resetLocationForm = () => {
-  setLocationName("");
-  setLocationDescription("");
-  setLocationCityId("");
-  setLocationEdit(null);
-};
-
-//sending location to backend (for post)
-const handleAddLocation = (locationData) => {
-  fetch(LOCATIONS_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(locationData),
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function () {
-      resetLocationForm();
-      fetchLocations();
-    })
-    .catch(function (error) {
-      console.error("Error adding location:", error);
-    });
-};
-// updating existing location (for put)
-const handleUpdateLocation = (id, locationData) => {
-  fetch(`${LOCATIONS_URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(locationData),
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function () {
-      resetLocationForm();
-      fetchLocations();
-    })
-    .catch(function (error) {
-      console.error("Error updating location:", error);
-    });
-};
-
-// deleting location by id ( for delete)
-const handleDeleteLocation = (id) => {
-  fetch(`${LOCATIONS_URL}/${id}`, {
-    method: "DELETE",
-  })
-    .then(function () {
-      fetchLocations();
-    })
-    .catch(function (error) {
-      console.error("Error deleting location:", error);
-    });
-};
-
-const handleLocationSubmit = (e) => {
-  e.preventDefault(); // prevents page from refreshing
-
-
-//building location object to send
-const locationData = {
-  name: locationName,
-  description: locationDescription,
-  city: {id: parseInt(locationCityId)}
-};
-
-//
-if (locationEdit) {
-  handleUpdateLocation(locationEdit, locationData);
-} else {
-  handleAddLocation (locationData);
-}
-};
-
-//handling update
+// edit exisiting event (UPDATE)
 const handleUpdateEvent = (id, eventData) => {
   fetch(`${API_URL}/${id}`, {
     method: "PUT",
@@ -236,6 +155,7 @@ const resetForm = () => { //resets the fields
     setIdEdit(null);
 };
 
+// new event created (CREATE)
 const handleAddEvent = (eventData) => {
     fetch(API_URL, {
         method: "POST",
@@ -254,6 +174,7 @@ const handleAddEvent = (eventData) => {
     });
 };
 
+// removes an event by id (DELETE)
 const handleDeleteClick = (id) => {
   fetch(`${API_URL}/${id}`, {
     method: "DELETE",
@@ -290,9 +211,13 @@ const handleSubmit = (e) => {
   //one for location and one for event
   return (
     <section className="events-section">
+
+      {/* section for picking cities the user is interested in */}
       <h1 className="events-title"> Manage Locations </h1>
 
       <div className="events-content"> 
+
+        {/* form to add a new city of interest */}
         <form className = "event-form" onSubmit={handleAddCityInterest}>
           <h2>Add City of Interest</h2>
 
@@ -308,9 +233,11 @@ const handleSubmit = (e) => {
 
         </form>
 
+        {/* shows only cities marked as interested */}
         <div className = "event-list">
           {cities.filter((city) => city.interested).length === 0 && 
             <p>No cities of interest yet, where to next?</p>}
+            
           {cities.filter((city) => city.interested).map((city) => ( 
             
             <div className = "event-row" key={city.id}> 
@@ -323,7 +250,6 @@ const handleSubmit = (e) => {
             </div>
           </div>
           
-
           ))}
           </div>
         </div> 
@@ -344,6 +270,7 @@ const handleSubmit = (e) => {
           <select id="location" value={locationId} onChange={(e) => setLocationId(e.target.value)} required>
               <option value="">Choose a location</option>
 
+                {/* shows locations belonging to cities that user is interested in */}
                 {locations
                   .filter((location) => location.city && location.city.interested)
                   .map((location) => (
@@ -352,10 +279,14 @@ const handleSubmit = (e) => {
 
               </select>
 
+          {/* button text changes based on whether we're adding or editing */}
           <button type="submit">{idEdit ? "Update Event" : "Save Event"}</button>
+          
+          {/* cancel button for editing */}
           {idEdit && <button type="button" onClick={resetForm}>Cancel</button>}
         </form>
-
+        
+        {/* lists saved experiences */}
         <div className="event-list">
           {events.length === 0 && <p>No experiences added, your floral path awaits!</p>}
           {events.map((event) => (
@@ -366,6 +297,7 @@ const handleSubmit = (e) => {
                 {event.location && event.location.city && ` | ${event.location.city.name}`}
                 
               </div>
+              {/* edit and delete actions for experience */}
               <div className ="event-buttons">
                 <button onClick={() => handleEditClick(event)}>Edit</button>
                 <button onClick={() => handleDeleteClick(event.id)}>Delete</button>

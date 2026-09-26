@@ -29,6 +29,7 @@ INSERT INTO location (name, description, city_id) VALUES
     ('Bartram''s Garden', 'The oldest surviving botanic garden in North America, along the Schuylkill River', 1),
     ('Morris Arboretum & Gardens', 'The arboretum of the University of Pennsylvania, with a Victorian landscape garden', 1),
     ('Awbury Arboretum', 'A historic English landscape park in Germantown', 1),
+    ('Philadelphia Flower Show', 'A vibrant and spectacular celebration of flowers, gardens, and creative floral design', 1),
     ('Fairmount Park Horticulture Center', 'Greenhouses and display gardens in West Fairmount Park', 1),
     ('Shofuso Japanese Cultural Center', 'A traditional Japanese house and garden with a koi pond', 1),
     ('Azalea Garden', 'Spring azalea plantings near the Philadelphia Museum of Art', 1),

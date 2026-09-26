@@ -23,7 +23,7 @@ const BrowseCard = ({title, image, date, location}) => {
     return (
         <div className="browse-card">
           <div className = "card-image" >
-        <img src={image} alt={title} />
+        <img src={image} alt={title + " image edited with AI"} />
         </div>
 
           {/* alt text is set by using the event title */}
